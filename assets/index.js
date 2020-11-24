@@ -30,6 +30,21 @@ function shippingUS(amount){
     }
 }
 
+function shippingCan(amount){
+    console.log("amount", amount)
+    if (amount > 0 && amount <= 25){
+        shipping = 10
+    } else if (amount > 25.01 && amount <= 75) {
+        shipping = 20
+    } else if (amount > 75.01 && amount <= 125) {
+        shipping = 30
+    } else if (amount > 125.01 && amount <= 300){
+        shipping = 50
+    } else {
+        shipping = 60
+    }
+}
+
 $("#totDisShip").on("click", function(){
     total = $("#initTotal").val();
     console.log("total", total)
@@ -70,3 +85,29 @@ function addTax(taxable){
     var tax = taxable * .075
     subTax = subTotal + tax
 }
+
+// ---------------------------------------------------
+
+$("#totShipCan").on("click", function(){
+    total = $("#initTotal").val();
+    console.log("total", total)
+    shippingCan(total)
+    console.log("shipping", shipping)
+    finalTotal = parseFloat(total) + parseFloat(shipping)
+    $("#finalTotal").text(finalTotal)
+
+})
+
+$("#totDisShipCan").on("click", function(){
+    total = $("#initTotal").val();
+    console.log("total", total)
+    totDisShip()
+    console.log("discount", discount)
+    subTotal = total - discount
+    console.log("Subtotal", subTotal)
+    shippingCan(subTotal)
+    console.log("shipping", shipping)
+    finalTotal = subTotal + shipping
+    $("#finalTotal").text(finalTotal)
+
+})
