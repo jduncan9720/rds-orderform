@@ -10,7 +10,7 @@ $("#totShip").on("click", function(){
     console.log("total", total)
     shippingUS(total)
     console.log("shipping", shipping)
-    finalTotal = parseInt(total) + parseInt(shipping)
+    finalTotal = parseFloat(total) + parseFloat(shipping)
     $("#finalTotal").text(finalTotal)
 
 })
