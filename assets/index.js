@@ -4,6 +4,7 @@ var finalTotal = 0;
 var shipping = 0;
 var discount = 0;
 var subTax = 0;
+var tax = 0;
 
 $("#totShip").on("click", function(){
     total = $("#initTotal").val();
@@ -11,6 +12,7 @@ $("#totShip").on("click", function(){
     shippingUS(total)
     console.log("shipping", shipping)
     finalTotal = parseFloat(total) + parseFloat(shipping)
+    $("#finalShip").text(shipping)
     $("#finalTotal").text(finalTotal)
 
 })
@@ -55,6 +57,8 @@ $("#totDisShip").on("click", function(){
     shippingUS(subTotal)
     console.log("shipping", shipping)
     finalTotal = subTotal + shipping
+    $("#finalDis").text(discount)
+    $("#finalShip").text(shipping)
     $("#finalTotal").text(finalTotal)
 
 })
@@ -77,12 +81,15 @@ $("#totDisShipTax").on("click", function(){
     addTax(subTotal)
     console.log("subTax", subTax)
     finalTotal = subTax + shipping
+    $("#finalTax").text(tax)
+    $("#finalDis").text(discount)
+    $("#finalShip").text(shipping)
     $("#finalTotal").text(finalTotal)
 
 })
 
 function addTax(taxable){
-    var tax = taxable * .075
+    tax = taxable * .075
     subTax = subTotal + tax
 }
 
@@ -94,6 +101,7 @@ $("#totShipCan").on("click", function(){
     shippingCan(total)
     console.log("shipping", shipping)
     finalTotal = parseFloat(total) + parseFloat(shipping)
+    $("#finalShip").text(shipping)
     $("#finalTotal").text(finalTotal)
 
 })
@@ -108,6 +116,8 @@ $("#totDisShipCan").on("click", function(){
     shippingCan(subTotal)
     console.log("shipping", shipping)
     finalTotal = subTotal + shipping
+    $("#finalDis").text(shipping)
+    $("#finalShip").text(shipping)
     $("#finalTotal").text(finalTotal)
 
 })
