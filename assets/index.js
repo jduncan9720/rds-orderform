@@ -10,7 +10,9 @@ $("#totShip").on("click", function(){
     console.log("total", total)
     shippingUS(total)
     console.log("shipping", shipping)
-    totalShipping(total, shipping)
+    finalTotal = parseInt(total) + parseInt(shipping)
+    $("#finalTotal").text(finalTotal)
+
 })
 
 function shippingUS(amount){
@@ -26,11 +28,6 @@ function shippingUS(amount){
     } else {
         shipping = 30
     }
-}
-
-function totalShipping(data1, data2){
-    finalTotal = parseInt(data1) + parseInt(data2)
-    $("#finalTotal").text(finalTotal)
 }
 
 $("#totDisShip").on("click", function(){
