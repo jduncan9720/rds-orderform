@@ -19,7 +19,28 @@ $("#totShip").on("click", function(){
     $("#finalShip").text(shipping.toFixed(2))
     $("#finalTotal").text(finalTotal.toFixed(2))
 
-})
+});
+
+$("#totShipTax").on("click", function(){
+    $("#finalTax").text("")
+    $("#finalDis").text("")
+    $("#finalShip").text("")
+    $("#finalTotal").text("")
+    total = $("#initTotal").val();
+    shippingUS(total)
+    console.log("shipping", shipping)
+    addTax(total);
+    console.log("subTax", subTax)
+    subTotal = parseFloat(total) + parseFloat(shipping);
+    console.log("subTotal", subTotal)
+    finalTotal = subTotal + tax
+    console.log("Total", finalTotal)
+    $("#finalTax").text(tax.toFixed(2))
+    $("#finalShip").text(shipping.toFixed(2))
+    $("#finalTotal").text(finalTotal.toFixed(2))
+
+
+});
 
 function shippingUS(amount){
     console.log("amount", amount)
